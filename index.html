@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Card Tree</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=600, initial-scale=0.8" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="index">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header" class="alt">
+					<h1 id="logo"><a href="index.html">Card Tree</a></h1>
+				</header>
+
+			<!-- Banner -->
+				<section id="banner">
+
+					<div class="inner">
+                        <label class="category">Category</label>
+                        
+                        <span id="grocery" class="category-btn fa fa-shopping-cart" title="grocery" onclick="activate('grocery')"></span>
+                        <span id="dining" class="category-btn fa fa-cutlery" title="dining" onclick="activate('dining')"></span>
+                        <span id="mortgage" class="category-btn fa fa-home" title="mortgage" onclick="activate('mortgage')"></span>
+                        <span id="shopping" class="category-btn fa fa-shopping-bag" title="retail shopping" onclick="activate('shopping')"></span>
+                        <span id="insurance" class="category-btn fa fa-file" title="insurance" onclick="activate('insurance')"></span>
+                        <span id="water" class="category-btn fa fa-tint" title="water" onclick="activate('water')"></span>
+                        <span id="utilities" class="category-btn fa fa-bolt" title="utilities" onclick="activate('utilities')"></span>
+                        <span id="online" class="category-btn fa fa-globe" title="online shopping" onclick="activate('online')"></span>
+                        <span id="others" class="category-btn fa fa-question" title="others" onclick="activate('others')"></span>
+                        
+                        <br>
+						<label class="category fa fa-apple"> Pay</label>
+                        <input class="box" id="mobilePayment" type="checkbox" checked>
+                        <br>
+						<label class="category fa fa-dollar"> Amount</label>
+                        <input id="amt" class="amt-field" type="number" placeholder="0.00">
+
+                        <span class="submit-btn fa fa-arrow-right" onclick="getResult()"></span>
+                        <span class="submit-btn fa fa-trash" onclick="reset()"></span>
+                        <div id="result">
+                            <br>
+                            <img id="card" src="images/AE.jpg" height="120" alt="" />
+                            <img id="paypal" src="images/PayPal.jpg" height="120" alt="" />
+                        </div>
+					</div>
+
+				</section>
+
+            <!-- Main -->
+            
+				<!-- <article id="main">
+
+					
+						<section class="wrapper style3 container special">
+
+							<div class="row">
+								<div class="12u">
+									<section>
+                                        <header>
+											<h3>Category 1</h3>
+										</header>
+										<img src="" height="260" alt="" />
+                                    </section>
+								</div>
+							</div>
+							<div class="row">
+								<div class="12u">
+									<section>
+                                        <header>
+											<h3>Category 2</h3>
+										</header>
+										<img src="" height="180" alt="" />
+                                    </section>
+								</div>
+							</div>
+                                    <div class="row">
+								<div class="12u">
+									<section>
+                                        <header>
+											<h3>Category 3</h3>
+										</header>
+										<img src="" height="180" alt="" />
+                                    </section>
+								</div>
+							</div>
+
+						</section>
+
+				</article> -->
+
+
+			<!-- Footer -->
+				<footer id="footer">
+
+					<ul class="copyright">
+						<li>&copy; Lian S</li>
+					</ul>
+
+				</footer>
+
+		</div>
+        
+        <!-- Scripts -->
+            <script>
+                var activated = "";
+                function getResult() {
+                    let mobilePayment = document.getElementById("mobilePayment").checked;
+                    let amt = document.getElementById("amt").value;
+                    if(amt<0 || amt == ""){ alert("Amount error!"); }
+                    else if (activated == "") { alert("Choose a category!") }
+                    else{
+                        document.getElementById("paypal").style.display = "none";
+                        switch(activated){
+                        case "grocery":
+                            document.getElementById("card").src = "images/TD.jpg";
+                            break;
+                        case "dining":
+                            document.getElementById("card").src = "images/BMO.jpg";
+                            break;
+                        case "mortgage":
+                            document.getElementById("card").src = "images/AE.jpg";
+                            break;
+                        case "shopping":
+                            document.getElementById("card").src = "images/AE.jpg";
+                            break;
+                        case "insurance":
+                            document.getElementById("card").src = "images/AE.jpg";
+                            break;
+                        case "water":
+                            document.getElementById("card").src = "images/BMO.jpg";
+                            break;
+                        case "utilities":
+                            document.getElementById("card").src = "images/BMO.jpg";
+                            break;
+                        case "online":
+                            document.getElementById("card").src = "images/AE.jpg";
+                            document.getElementById("paypal").style.display = "inline-block";
+                            break;
+                        default:
+                            document.getElementById("card").src = "images/AE.jpg";
+                            break;
+                        }
+                    document.getElementById("result").style.display = "block";
+                    document.getElementsByClassName("inner")[0].style.height = "400px";
+                    }
+                };
+                function reset() {
+                    activate("");
+                    document.getElementById("mobilePayment").checked = true;
+                    document.getElementById("amt").value = null;
+                    document.getElementById("result").style.display = "none";
+                    document.getElementsByClassName("inner")[0].style.height = "200px";
+                };
+                function activate(cat) {
+                    document.getElementById("grocery").style.color = "aliceblue";
+                    document.getElementById("dining").style.color = "aliceblue";
+                    document.getElementById("mortgage").style.color = "aliceblue";
+                    document.getElementById("shopping").style.color = "aliceblue";
+                    document.getElementById("insurance").style.color = "aliceblue";
+                    document.getElementById("water").style.color = "aliceblue";
+                    document.getElementById("utilities").style.color = "aliceblue";
+                    document.getElementById("online").style.color = "aliceblue";
+                    document.getElementById("others").style.color = "aliceblue";
+                    if(cat!="") document.getElementById(cat).style.color = "cornflowerblue";
+                    activated = cat;
+                };
+            </script>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollgress.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
